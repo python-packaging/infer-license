@@ -15,6 +15,7 @@ class License:
             __name__, f"licenses/{self.shortname}.txt"
         ).decode()
 
+
 # See some discussion at https://github.com/pypa/warehouse/issues/2996 about
 # using SPDX names, which is what we use for shortname.  The two marked TODO
 # here don't have a current Trove classifier.
