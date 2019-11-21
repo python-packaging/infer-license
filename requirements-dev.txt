@@ -1,1 +1,9 @@
-coverage
+setuptools_scm==3.3.3
+coverage==4.5.4
+isort==4.3.21
+black==19.10b0
+tox==3.14.1
+flake8==3.7.9
+mypy==0.740
+wheel==0.33.6
+twine==3.0.0

@@ -1,1 +1,1 @@
-include infer_license/licenses/*.txt
+recursive-include infer_license *.txt

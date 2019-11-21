@@ -1,1 +1,1 @@
-__version__ = "0.0.1"
+from .api import guess_file, guess_text  # noqa: F401

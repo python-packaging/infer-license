@@ -1,15 +1,9 @@
 from setuptools import setup
 
-
-def parse_version():
-    with open("infer_license/__init__.py") as f:
-        for line in f:
-            if line.startswith("__version__"):
-                return line.split()[-1].strip("\"'")
-
 setup(
-    version=parse_version(),
+    use_scm_version=True,
     python_requires=">=3.6",
     install_requires=["dataclasses >= 0.7; python_version < '3.7'",],
+    entry_points={"console_scripts": ["infer_license = infer_license.cmdline:main"]},
+    include_package_data=True,
 )
-

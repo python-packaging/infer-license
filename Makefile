@@ -17,7 +17,7 @@ setup:
 .PHONY: test
 test:
 	python -m coverage run -m infer_license.tests $(TESTOPTS)
-	python -m coverage report --fail-under=90 --omit='.venv/*,.tox/*' --show-missing
+	python -m coverage report --fail-under=100 --include='infer_license/*' --show-missing
 
 .PHONY: format
 format:
@@ -29,6 +29,7 @@ lint:
 	python -m isort --recursive --diff $(SOURCES)
 	python -m black --check $(SOURCES)
 	python -m flake8 $(SOURCES)
+	mypy --strict infer_license
 
 .PHONY: release
 release:

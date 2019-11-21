@@ -1,3 +1,5 @@
+.eggs
+.mypy_cache
 *.py[co]
 .coverage
 .venv
