@@ -17,7 +17,7 @@ setup:
 .PHONY: test
 test:
 	python -m coverage run -m infer_license.tests $(TESTOPTS)
-	python -m coverage report --fail-under=100 --include='infer_license/*' --show-missing
+	python -m coverage report
 
 .PHONY: format
 format:
