@@ -19,8 +19,13 @@ def guess_text(license_text: str) -> Optional[License]:
 
 
 def guess_file(filename: Union[str, "os.PathLike[str]"]) -> Optional[License]:
-    with open(filename) as f:
-        data = f.read()
+    try:
+        with open(filename, encoding="utf-8") as f:
+            data = f.read()
+    except UnicodeDecodeError:
+        with open(filename, encoding="latin-1") as f:
+            data = f.read()
+
     return guess_text(data)
 
 

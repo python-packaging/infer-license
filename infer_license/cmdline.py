@@ -10,7 +10,10 @@ def main(filenames: Optional[List[str]] = None) -> None:
         filenames = sys.argv[1:]
 
     for filename in filenames:
-        result = guess_file(filename)
+        try:
+            result = guess_file(filename)
+        except IOError:
+            result = None
         print(f"{filename}: {result.shortname if result else 'Unknown'}")
 
 
