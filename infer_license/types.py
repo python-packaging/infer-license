@@ -26,6 +26,7 @@ class License:
     def trigrams(self) -> Set[str]:
         if not self._trigrams:
             _ = self.text
+        assert self._trigrams is not None
         return self._trigrams
 
 
