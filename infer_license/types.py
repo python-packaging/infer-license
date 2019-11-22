@@ -66,6 +66,7 @@ KNOWN_LICENSES = [
     ),
     License("MIT License", "MIT", "License :: OSI Approved :: MIT License"),
     License("MIT No Attribution", "MIT-0", "License :: OSI Approved :: MIT License"),
+    License("X11 License", "X11", "TODO"),
 ]
 
 
