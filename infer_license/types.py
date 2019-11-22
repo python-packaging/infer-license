@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Optional, Set
 
 import pkg_resources
 
@@ -9,11 +10,28 @@ class License:
     shortname: str
     trove_classifier: str
 
+    _text: Optional[str] = field(default=None, repr=False)
+    _trigrams: Optional[Set[str]] = field(default=None, repr=False)
+
     @property
     def text(self) -> str:
-        return pkg_resources.resource_string(
-            __name__, f"licenses/{self.shortname}.txt"
-        ).decode()
+        if not self._text:
+            self._text = pkg_resources.resource_string(
+                __name__, f"licenses/{self.shortname}.txt"
+            ).decode()
+            self._trigrams = trigrams(self.text)
+        return self._text
+
+    @property
+    def trigrams(self) -> Set[str]:
+        if not self._trigrams:
+            _ = self.text
+        return self._trigrams
+
+
+def trigrams(text: str) -> Set[str]:
+    words = [w for w in text.split() if w not in ("/*", "*", "*/", "#")]
+    return {f"{words[i]}-{words[i+1]}-{words[i+2]}" for i in range(len(words) - 3)}
 
 
 # See some discussion at https://github.com/pypa/warehouse/issues/2996 about
