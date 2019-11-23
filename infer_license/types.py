@@ -6,10 +6,11 @@ import pkg_resources
 
 @dataclass
 class License:
-    name: str
-    shortname: str
-    trove_classifier: str
+    name: str  # SPDX Full name
+    shortname: str  # SPDX Identifier
+    trove_classifier: Optional[str]
 
+    # For lazy loading
     _text: Optional[str] = field(default=None, repr=False)
     _trigrams: Optional[Set[str]] = field(default=None, repr=False)
 
@@ -19,13 +20,12 @@ class License:
             self._text = pkg_resources.resource_string(
                 __name__, f"licenses/{self.shortname}.txt"
             ).decode()
-            self._trigrams = trigrams(self.text)
         return self._text
 
     @property
     def trigrams(self) -> Set[str]:
         if not self._trigrams:
-            _ = self.text
+            self._trigrams = trigrams(self.text)
         assert self._trigrams is not None
         return self._trigrams
 
@@ -36,8 +36,8 @@ def trigrams(text: str) -> Set[str]:
 
 
 # See some discussion at https://github.com/pypa/warehouse/issues/2996 about
-# using SPDX names, which is what we use for shortname.  The two marked TODO
-# here don't have a current Trove classifier.
+# using SPDX names, which is what we use for shortname.  Several do not have
+# Trove classifiers available.
 KNOWN_LICENSES = [
     License(
         "Apache License 2.0",
@@ -86,6 +86,13 @@ KNOWN_LICENSES = [
     License("MIT License", "MIT", "License :: OSI Approved :: MIT License"),
     License("MIT No Attribution", "MIT-0", "License :: OSI Approved :: MIT License"),
     License("X11 License", "X11", "TODO"),
+    # This one is a bit unusual; the license text I include is verbatim from the
+    # Python distribution, not from https://spdx.org/licenses/Python-2.0.html
+    License(
+        "Python License 2.0",
+        "Python-2.0",
+        "License :: OSI Approved :: Python Software Foundation License",
+    ),
 ]
 
 

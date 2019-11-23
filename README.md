@@ -6,12 +6,17 @@ API to guess what license a given file represents.
 ```
 >>> from infer_license import guess_file
 >>> print(guess_file("LICENSE"))
-License(name='MIT License', shortname='MIT')
+License(name='MIT License', shortname='MIT', trove_classifier='License :: OSI Approved :: MIT License')
 >>> guess_file("setup.py")
 None
 ```
 
 There's also a handy `infer_license` script that takes a filename.
+
+```
+$ infer_license LICENSE
+LICENSE: MIT
+```
 
 
 # License

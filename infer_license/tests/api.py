@@ -1,3 +1,4 @@
+import tempfile
 import unittest
 
 from .. import api, types
@@ -17,6 +18,16 @@ class ApiTest(unittest.TestCase):
         g = api.guess_file("LICENSE")
         assert g is not None
         self.assertEqual("MIT", g.shortname)
+
+    def test_guess_filename_latin1(self) -> None:
+        with tempfile.NamedTemporaryFile() as f:
+            with open("LICENSE", "rb") as f2:
+                data = f2.read()
+            f.write(data + b"\xe9")
+            f.flush()
+            g = api.guess_file(f.name)
+            assert g is not None
+            self.assertEqual("MIT", g.shortname)
 
     def test_bsd_exact(self) -> None:
         bsd = types.license_by_shortname("BSD-2-Clause")
