@@ -54,7 +54,7 @@ KNOWN_LICENSES = [
         "BSD-3-Clause",
         "License :: OSI Approved :: BSD License",
     ),
-    License("Creative Commons Attribution 4.0 International", "CC-BY-4.0", "TODO"),
+    License("Creative Commons Attribution 4.0 International", "CC-BY-4.0", None),
     License(
         "GNU Affero General Public License v3.0 or later",
         "AGPL-3.0-or-later",
@@ -66,7 +66,7 @@ KNOWN_LICENSES = [
         "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
     ),
     License(
-        "GNU Lesser General Public License v2.1 or later", "LGPL-2.1-or-later", "TODO"
+        "GNU Lesser General Public License v2.1 or later", "LGPL-2.1-or-later", None,
     ),
     License(
         "GNU Lesser General Public License v3.0 or later",
@@ -85,7 +85,7 @@ KNOWN_LICENSES = [
     ),
     License("MIT License", "MIT", "License :: OSI Approved :: MIT License"),
     License("MIT No Attribution", "MIT-0", "License :: OSI Approved :: MIT License"),
-    License("X11 License", "X11", "TODO"),
+    License("X11 License", "X11", None),
     # This one is a bit unusual; the license text I include is verbatim from the
     # Python distribution, not from https://spdx.org/licenses/Python-2.0.html
     License(
