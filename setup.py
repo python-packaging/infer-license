@@ -5,4 +5,5 @@ setup(
     install_requires=["dataclasses >= 0.7; python_version < '3.7'",],
     entry_points={"console_scripts": ["infer_license = infer_license.cmdline:main"]},
     package_data={"infer_license": ["py.typed"]},
+    include_package_data=True,
 )
