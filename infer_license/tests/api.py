@@ -15,8 +15,13 @@ class ApiTest(unittest.TestCase):
         g = api.guess_text("foo")
         self.assertEqual(None, g)
 
-    def test_guess_filename(self) -> None:
+    def test_guess_filename_license_mit(self) -> None:
         g = api.guess_file("LICENSE")
+        assert g is not None
+        self.assertEqual("MIT", g.shortname)
+
+    def test_guess_filename_setup_mit(self) -> None:
+        g = api.guess_file("setup.py")
         assert g is not None
         self.assertEqual("MIT", g.shortname)
 

@@ -18,7 +18,34 @@ def guess_text(license_text: str) -> Optional[License]:
     return None
 
 
+def guess_filetype(filename: Union[str, "os.PathLike[str]"]) -> str:
+    if str(filename).endswith("setup.py"):
+        return "setup.py"
+    else:
+        return "LICENSE"
+
+
+def detect_license_from_setuppy(
+    filename: Union[str, "os.PathLike[str]"]
+) -> Optional[License]:
+    from dephell_setuptools._manager import read_setup
+
+    data = read_setup(path=filename)
+    license_string = data.get("license")
+    print(license_string)
+    for license in KNOWN_LICENSES:
+        if license_string in [license.name, license.shortname]:
+            return license
+
+    return None
+
+
 def guess_file(filename: Union[str, "os.PathLike[str]"]) -> Optional[License]:
+    type_ = guess_filetype(filename)
+
+    if type_ == "setup.py":
+        return detect_license_from_setuppy(filename)
+
     try:
         with open(filename, encoding="utf-8") as f:
             data = f.read()

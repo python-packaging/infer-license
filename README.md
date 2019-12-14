@@ -8,6 +8,8 @@ API to guess what license a given file represents.
 >>> print(guess_file("LICENSE"))
 License(name='MIT License', shortname='MIT', trove_classifier='License :: OSI Approved :: MIT License')
 >>> guess_file("setup.py")
+License(name='MIT License', shortname='MIT', trove_classifier='License :: OSI Approved :: MIT License')
+>>> guess_file("README.md")
 None
 ```
 
