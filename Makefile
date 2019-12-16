@@ -12,24 +12,24 @@ venv:
 
 .PHONY: setup
 setup:
-	python -m pip install -Ur requirements-dev.txt
+	$(PYTHON) -m pip install -Ur requirements-dev.txt
 
 .PHONY: test
 test:
-	python -m coverage run -m infer_license.tests $(TESTOPTS)
-	python -m coverage report
+	$(PYTHON) -m coverage run -m infer_license.tests $(TESTOPTS)
+	$(PYTHON) -m coverage report
 
 .PHONY: format
 format:
-	python -m isort --recursive -y $(SOURCES)
-	python -m black $(SOURCES)
+	$(PYTHON) -m isort --recursive -y $(SOURCES)
+	$(PYTHON) -m black $(SOURCES)
 
 .PHONY: lint
 lint:
-	python -m isort --recursive --diff $(SOURCES)
-	python -m black --check $(SOURCES)
-	python -m flake8 $(SOURCES)
-	mypy --strict infer_license
+	$(PYTHON) -m isort --recursive --diff $(SOURCES)
+	$(PYTHON) -m black --check $(SOURCES)
+	$(PYTHON) -m flake8 $(SOURCES)
+	$(PYTHON) -m mypy --strict infer_license
 
 .PHONY: release
 release:
