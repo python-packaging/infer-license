@@ -1,0 +1,12 @@
+manifest:
+  version: 0.0
+
+  remotes:
+  - name: github
+    url-base: https://github.com/
+
+  projects:
+  - name: spdx-license-list
+    dst: infer_license/licenses
+    repo-path: spdx/license-list-data
+    src: text
