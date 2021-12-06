@@ -1,5 +1,5 @@
 import unittest
-from packaging_classifiers import classifiers
+from trove_classifiers import classifiers
 from .. import types
 
 
