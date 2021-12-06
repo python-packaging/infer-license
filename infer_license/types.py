@@ -87,9 +87,7 @@ KNOWN_LICENSES = [
     License(
         "MIT No Attribution",
         "MIT-0",
-        "License :: OSI Approved :: MIT License",
-        # https://pypi.org/classifiers/ mentions below classifier, but does not exist in packaging-classifiers
-        # "License :: OSI Approved :: MIT No Attribution License (MIT-0)",
+        "License :: OSI Approved :: MIT No Attribution License (MIT-0)",
     ),
     License("X11 License", "X11", None),
     # This one is a bit unusual; the license text I include is verbatim from the
@@ -846,9 +844,7 @@ KNOWN_LICENSES = [
     License(
         "MIT No Attribution",
         "MIT-0",
-        "License :: OSI Approved :: MIT License",
-        # https://pypi.org/classifiers/ mentions below classifier, but does not exist in packaging-classifiers
-        # "License :: OSI Approved :: MIT No Attribution License (MIT-0)",
+        "License :: OSI Approved :: MIT No Attribution License (MIT-0)",
     ),
     License("Enlightenment License (e16)", "MIT-advertising", None),
     License("CMU License", "MIT-CMU", None),
@@ -1133,9 +1129,7 @@ KNOWN_LICENSES = [
     License(
         "The Unlicense",
         "Unlicense",
-        "License :: OSI Approved",
-        # https://pypi.org/classifiers/ mentions below classifier, but does not exist in packaging-classifiers
-        # "License :: OSI Approved :: The Unlicense (Unlicense)",
+        "License :: OSI Approved :: The Unlicense (Unlicense)",
     ),
     License(
         "Universal Permissive License v1.0",
