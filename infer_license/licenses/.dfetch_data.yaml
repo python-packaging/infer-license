@@ -1,0 +1,8 @@
+dfetch:
+  branch: master
+  hash: 7ea0d8ac76429bedeed4adcaa85d567b
+  last_fetch: 04/12/2021, 22:41:58
+  patch: ''
+  remote_url: https://github.com/spdx/license-list-data
+  revision: 93b66352608d470dc094a344a110b94d63fabb73
+  tag: ''
