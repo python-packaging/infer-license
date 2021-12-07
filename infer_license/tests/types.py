@@ -1,5 +1,7 @@
 import unittest
+
 from trove_classifiers import classifiers
+
 from .. import types
 
 
