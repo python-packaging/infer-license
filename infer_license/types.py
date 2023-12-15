@@ -66,7 +66,9 @@ KNOWN_LICENSES = [
         "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
     ),
     License(
-        "GNU Lesser General Public License v2.1 or later", "LGPL-2.1-or-later", None,
+        "GNU Lesser General Public License v2.1 or later",
+        "LGPL-2.1-or-later",
+        None,
     ),
     License(
         "GNU Lesser General Public License v3.0 or later",

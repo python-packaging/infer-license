@@ -21,13 +21,11 @@ test:
 
 .PHONY: format
 format:
-	$(PYTHON) -m isort --recursive -y $(SOURCES)
-	$(PYTHON) -m black $(SOURCES)
+	$(PYTHON) -m ufmt format $(SOURCES)
 
 .PHONY: lint
 lint:
-	$(PYTHON) -m isort --recursive --diff $(SOURCES)
-	$(PYTHON) -m black --check $(SOURCES)
+	$(PYTHON) -m ufmt check $(SOURCES)
 	$(PYTHON) -m flake8 $(SOURCES)
 	$(PYTHON) -m mypy --strict infer_license
 
