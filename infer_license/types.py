@@ -5,9 +5,9 @@ try:
     # 3.7+
     # but this api is deprecated in 3.9
     from importlib.resources import read_text as read_text_resource
-except ImportError:
+except ImportError:  # pragma: no cover
     # 3.6
-    from importlib_resources import (  # type: ignore[no-redef]
+    from importlib_resources import (  # type: ignore[no-redef,attr-defined,unused-ignore]
         read_text as read_text_resource,
     )
 
@@ -40,7 +40,7 @@ class License:
 
 def trigrams(text: str) -> Set[str]:
     words = [w for w in text.split() if w not in ("/*", "*", "*/", "#")]
-    return {f"{words[i]}-{words[i+1]}-{words[i+2]}" for i in range(len(words) - 3)}
+    return {f"{words[i]}-{words[i + 1]}-{words[i + 2]}" for i in range(len(words) - 3)}
 
 
 # See some discussion at https://github.com/pypa/warehouse/issues/2996 about
