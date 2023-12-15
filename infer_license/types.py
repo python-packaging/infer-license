@@ -1,7 +1,15 @@
 from dataclasses import dataclass, field
 from typing import Optional, Set
 
-import pkg_resources
+try:
+    # 3.7+
+    # but this api is deprecated in 3.9
+    from importlib.resources import read_text as read_text_resource
+except ImportError:
+    # 3.6
+    from importlib_resources import (  # type: ignore[no-redef]
+        read_text as read_text_resource,
+    )
 
 
 @dataclass
@@ -17,9 +25,9 @@ class License:
     @property
     def text(self) -> str:
         if not self._text:
-            self._text = pkg_resources.resource_string(
-                __name__, f"licenses/{self.shortname}.txt"
-            ).decode()
+            self._text = read_text_resource(
+                __package__ + ".licenses", f"{self.shortname}.txt"
+            )
         return self._text
 
     @property
