@@ -12,7 +12,7 @@ venv:
 
 .PHONY: setup
 setup:
-	python -m pip install -Ur requirements-dev.txt
+	python -m pip install -Ue .[dev,test]
 
 .PHONY: test
 test:
@@ -21,15 +21,14 @@ test:
 
 .PHONY: format
 format:
-	python -m isort --recursive -y $(SOURCES)
-	python -m black $(SOURCES)
+	python -m ufmt format $(SOURCES)
 
 .PHONY: lint
 lint:
-	python -m isort --recursive --diff $(SOURCES)
-	python -m black --check $(SOURCES)
+	python -m ufmt check $(SOURCES)
 	python -m flake8 $(SOURCES)
-	mypy --strict infer_license
+	python -m checkdeps --allow-names infer_license infer_license
+	mypy --strict --install-types --non-interactive infer_license
 
 .PHONY: release
 release:
