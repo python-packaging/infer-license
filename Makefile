@@ -12,22 +12,23 @@ venv:
 
 .PHONY: setup
 setup:
-	$(PYTHON) -m pip install -Ur requirements-dev.txt
+	python -m pip install -Ue .[dev,test]
 
 .PHONY: test
 test:
-	$(PYTHON) -m coverage run -m infer_license.tests $(TESTOPTS)
-	$(PYTHON) -m coverage report
+	python -m coverage run -m infer_license.tests $(TESTOPTS)
+	python -m coverage report
 
 .PHONY: format
 format:
-	$(PYTHON) -m ufmt format $(SOURCES)
+	python -m ufmt format $(SOURCES)
 
 .PHONY: lint
 lint:
-	$(PYTHON) -m ufmt check $(SOURCES)
-	$(PYTHON) -m flake8 $(SOURCES)
-	$(PYTHON) -m mypy --strict infer_license
+	python -m ufmt check $(SOURCES)
+	python -m flake8 $(SOURCES)
+	python -m checkdeps --allow-names infer_license,importlib_resources infer_license
+	mypy --strict --install-types --non-interactive infer_license
 
 .PHONY: release
 release:

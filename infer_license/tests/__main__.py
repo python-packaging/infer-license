@@ -1,6 +1,4 @@
 import unittest
 
-from .api import ApiTest  # noqa: F401
-from .cmdline import CmdlineTest  # noqa: F401
-
-unittest.main()
+if __name__ == "__main__":
+    unittest.main(module="infer_license.tests", verbosity=2)
